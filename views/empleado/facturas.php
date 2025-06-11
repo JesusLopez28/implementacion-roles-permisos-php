@@ -7,16 +7,6 @@ Auth::checkRole('Empleado');
 
 $facturaController = new FacturaController();
 $facturas = $facturaController->index();
-
-// Procesar eliminación
-if (isset($_GET['delete'])) {
-    $id = $_GET['delete'];
-
-    if ($facturaController->destroy($id)) {
-        header("Location: facturas.php?success=deleted");
-        exit();
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -92,9 +82,6 @@ if (isset($_GET['delete'])) {
                                     <td>
                                         <a href="edit_factura.php?id=<?php echo $factura['id']; ?>" class="btn btn-sm btn-primary">
                                             <i class="bi bi-pencil"></i>
-                                        </a>
-                                        <a href="?delete=<?php echo $factura['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('¿Está seguro de eliminar esta factura?')">
-                                            <i class="bi bi-trash"></i>
                                         </a>
                                         <a href="view_factura.php?id=<?php echo $factura['id']; ?>" class="btn btn-sm btn-info">
                                             <i class="bi bi-eye"></i> Ver detalles

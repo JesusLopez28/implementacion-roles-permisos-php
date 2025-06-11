@@ -14,14 +14,14 @@ Sistema de administración de facturas con roles y permisos implementado con PHP
 
 - Usuarios (users)
 - Roles (roles)
-- Permisos (permissions)
+- Permisos (permissions): create, read, update, delete
 - Relaciones muchos a muchos
 - Facturas con diferentes niveles de acceso
 
 ## Roles y Permisos
 
 - **Administrador**: CRUD completo sobre facturas
-- **Empleado**: Lectura, actualización y eliminación de facturas
+- **Empleado**: Lectura y actualización de facturas (sin eliminación)
 - **Cliente**: Solo lectura de sus propias facturas
 
 ## Instalación

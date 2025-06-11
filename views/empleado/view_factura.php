@@ -93,9 +93,7 @@ if(!$factura) {
                     <a href="edit_factura.php?id=<?php echo $factura['id']; ?>" class="btn btn-primary">
                         <i class="bi bi-pencil"></i> Editar factura
                     </a>
-                    <a href="facturas.php?delete=<?php echo $factura['id']; ?>" class="btn btn-danger" onclick="return confirm('¿Está seguro de eliminar esta factura?')">
-                        <i class="bi bi-trash"></i> Eliminar factura
-                    </a>
+                    <!-- El botón de eliminar ha sido eliminado para los empleados -->
                 </div>
             </div>
         </div>
