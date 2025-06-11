@@ -38,14 +38,6 @@ session_start();
                             </div>
                         </form>
                     </div>
-                    <div class="card-footer">
-                        <div class="text-center">
-                            <p class="mb-0">Cuentas de prueba:</p>
-                            <small>admin@example.com / admin123</small><br>
-                            <small>empleado@example.com / empleado123</small><br>
-                            <small>cliente@example.com / cliente123</small>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

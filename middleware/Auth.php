@@ -22,7 +22,7 @@ class Auth {
         $user->id = $_SESSION['user_id'];
         
         if(!$user->hasRole($roleName)) {
-            header("Location: ../views/unauthorized.php");
+            header("Location: /implementacion-roles-permisos-php/views/unauthorized.php");
             exit();
         }
         
@@ -36,7 +36,7 @@ class Auth {
         $user->id = $_SESSION['user_id'];
         
         if(!$user->hasPermission($permissionName)) {
-            header("Location: ../views/unauthorized.php");
+            header("Location: /implementacion-roles-permisos-php/views/unauthorized.php");
             exit();
         }
         
