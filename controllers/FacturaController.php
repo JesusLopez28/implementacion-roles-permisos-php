@@ -31,7 +31,7 @@ class FacturaController {
         
         // Verificar si es cliente y está intentando ver factura ajena
         if($user->hasRole('Cliente') && $factura['user_id'] != $user->id) {
-            header("Location: /implementacion-roles-permisos-php/views/unauthorized.php");
+            header("Location: /views/unauthorized.php");
             exit();
         }
         
@@ -62,7 +62,7 @@ class FacturaController {
         
         // Verificar si es cliente y está intentando modificar factura ajena
         if($user->hasRole('Cliente') && $factura['user_id'] != $user->id) {
-            header("Location: /implementacion-roles-permisos-php/views/unauthorized.php");
+            header("Location: /views/unauthorized.php");
             exit();
         }
         
@@ -86,7 +86,7 @@ class FacturaController {
         
         // Verificar si es cliente y está intentando eliminar factura ajena
         if($user->hasRole('Cliente') && $factura['user_id'] != $user->id) {
-            header("Location: /implementacion-roles-permisos-php/views/unauthorized.php");
+            header("Location: /views/unauthorized.php");
             exit();
         }
         
