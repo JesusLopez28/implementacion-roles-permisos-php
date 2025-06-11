@@ -3,7 +3,9 @@ require_once __DIR__ . '/../models/User.php';
 
 class Auth {
     public static function check() {
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         
         if(!isset($_SESSION['user_id'])) {
             header("Location: ../views/auth/login.php");

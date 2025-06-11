@@ -9,25 +9,25 @@ $facturaController = new FacturaController();
 $facturas = $facturaController->index();
 
 // Procesar formulario de creación
-if(isset($_POST['create'])) {
+if (isset($_POST['create'])) {
     $data = [
         'user_id' => $_POST['user_id'],
         'descripcion' => $_POST['descripcion'],
         'monto' => $_POST['monto'],
         'fecha' => $_POST['fecha']
     ];
-    
-    if($facturaController->store($data)) {
+
+    if ($facturaController->store($data)) {
         header("Location: facturas.php?success=created");
         exit();
     }
 }
 
 // Procesar eliminación
-if(isset($_GET['delete'])) {
+if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
-    
-    if($facturaController->destroy($id)) {
+
+    if ($facturaController->destroy($id)) {
         header("Location: facturas.php?success=deleted");
         exit();
     }
@@ -35,6 +35,7 @@ if(isset($_GET['delete'])) {
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,6 +43,7 @@ if(isset($_GET['delete'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
@@ -63,12 +65,12 @@ if(isset($_GET['delete'])) {
     </nav>
 
     <div class="container mt-4">
-        <?php if(isset($_GET['success'])): ?>
+        <?php if (isset($_GET['success'])): ?>
             <div class="alert alert-success alert-dismissible fade show">
-                <?php 
-                    if($_GET['success'] == 'created') echo "Factura creada exitosamente.";
-                    if($_GET['success'] == 'updated') echo "Factura actualizada exitosamente.";
-                    if($_GET['success'] == 'deleted') echo "Factura eliminada exitosamente.";
+                <?php
+                if ($_GET['success'] == 'created') echo "Factura creada exitosamente.";
+                if ($_GET['success'] == 'updated') echo "Factura actualizada exitosamente.";
+                if ($_GET['success'] == 'deleted') echo "Factura eliminada exitosamente.";
                 ?>
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             </div>
@@ -96,22 +98,25 @@ if(isset($_GET['delete'])) {
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach($facturas as $factura): ?>
-                            <tr>
-                                <td><?php echo $factura['id']; ?></td>
-                                <td><?php echo $factura['usuario']; ?></td>
-                                <td><?php echo $factura['descripcion']; ?></td>
-                                <td>$<?php echo number_format($factura['monto'], 2); ?></td>
-                                <td><?php echo $factura['fecha']; ?></td>
-                                <td>
-                                    <a href="edit_factura.php?id=<?php echo $factura['id']; ?>" class="btn btn-sm btn-primary">
-                                        <i class="bi bi-pencil"></i>
-                                    </a>
-                                    <a href="?delete=<?php echo $factura['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('¿Está seguro de eliminar esta factura?')">
-                                        <i class="bi bi-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
+                            <?php foreach ($facturas as $factura): ?>
+                                <tr>
+                                    <td><?php echo $factura['id']; ?></td>
+                                    <td><?php echo $factura['usuario']; ?></td>
+                                    <td><?php echo $factura['descripcion']; ?></td>
+                                    <td>$<?php echo number_format($factura['monto'], 2); ?></td>
+                                    <td><?php echo $factura['fecha']; ?></td>
+                                    <td>
+                                        <a href="edit_factura.php?id=<?php echo $factura['id']; ?>" class="btn btn-sm btn-primary">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+                                        <a href="?delete=<?php echo $factura['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('¿Está seguro de eliminar esta factura?')">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
+                                        <a href="view_factura.php?id=<?php echo $factura['id']; ?>" class="btn btn-sm btn-info">
+                                            <i class="bi bi-eye"></i> Ver detalles
+                                        </a>
+                                    </td>
+                                </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
@@ -141,8 +146,8 @@ if(isset($_GET['delete'])) {
                                 $stmt = $conn->prepare($query);
                                 $stmt->execute();
                                 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                                
-                                foreach($users as $user) {
+
+                                foreach ($users as $user) {
                                     echo "<option value='" . $user['id'] . "'>" . $user['name'] . "</option>";
                                 }
                                 ?>
@@ -172,4 +177,5 @@ if(isset($_GET['delete'])) {
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
